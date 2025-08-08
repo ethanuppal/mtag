@@ -1,8 +1,8 @@
 // Copyright (C) 2025 Ethan Uppal. All rights reserved.
 
-use inquire::{Confirm, Select, Text, ui::RenderConfig};
+use inquire::{ui::RenderConfig, Confirm, Select, Text};
 use serde::{Deserialize, Serialize};
-use snafu::{ResultExt, Whatever, whatever};
+use snafu::{whatever, ResultExt, Whatever};
 use std::{fs, iter, path::Path, process::Command};
 
 mod inquire_stylesheet_shim;
@@ -213,7 +213,14 @@ fn main() -> Result<()> {
     let mut input_mp3s = files
         .filter_map(|f| f.ok())
         .map(|e| e.path())
-        .filter(|p| p.extension().map_or(false, |ext| ext == "mp3"))
+        .filter(|p| {
+            p.extension().map_or(false, |ext| {
+                ["mp3", "wav"]
+                    .into_iter()
+                    .find(|valid| *valid == ext)
+                    .is_some()
+            })
+        })
         .collect::<Vec<_>>();
     input_mp3s.sort();
 
