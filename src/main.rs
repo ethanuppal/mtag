@@ -216,7 +216,7 @@ fn main() -> Result<()> {
         .map(|e| e.path())
         .filter(|p| {
             p.extension().map_or(false, |ext| {
-                ["mp3", "wav"]
+                ["mp3", "m4a"]
                     .into_iter()
                     .find(|valid| *valid == ext)
                     .is_some()
