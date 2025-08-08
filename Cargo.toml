@@ -3,7 +3,7 @@ name = "mtag-tui"
 description = "TUI to turn audio files into an album"
 repository = "https://github.com/ethanuppal/mtag"
 authors = ["Ethan Uppal"]
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 license-file = "LICENSE"
 
