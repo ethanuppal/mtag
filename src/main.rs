@@ -1,8 +1,8 @@
 // Copyright (C) 2025 Ethan Uppal. All rights reserved.
 
-use inquire::{ui::RenderConfig, Confirm, Select, Text};
+use inquire::{Confirm, Select, Text, ui::RenderConfig};
 use serde::{Deserialize, Serialize};
-use snafu::{whatever, ResultExt, Whatever};
+use snafu::{ResultExt, Whatever, whatever};
 use std::{fs, iter, path::Path, process::Command};
 
 mod inquire_stylesheet_shim;
