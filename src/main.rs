@@ -190,12 +190,11 @@ fn main() -> Result<()> {
     }
     album_metadata.authors = authors;
 
-    if album_metadata.cover_image.is_some() || {
-        Confirm::new("Add album cover? [y/n]")
-            .with_default(true)
-            .prompt()
-            .whatever_context("Failed to prompt for whether album")?
-    } {
+    let add_cover_art = Confirm::new("Add album cover? [y/n]")
+        .with_default(true)
+        .prompt()
+        .whatever_context("Failed to prompt for whether album")?;
+    if add_cover_art {
         album_metadata.cover_image = Some(
             prompt_for_path::prompt_for_path(
                 "Choose cover image",
