@@ -15,6 +15,7 @@ struct AlbumMetadata {
     genre: Option<String>,
     authors: Vec<String>,
     cover_image: Option<String>,
+    #[serde(default)]
     tracks: Vec<TrackMetadata>,
 }
 
